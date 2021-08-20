@@ -26,8 +26,8 @@ public class MovieManager { // создаем класс, в котором бу
 
     public Movie[] getAll() { // выдать последние 10 фильмов в обратном порядке
         int resultLength;
-        if (movies.length - 1 > amountOfFilmsToShow) {
-            resultLength = amountOfFilmsToShow + 1;
+        if (movies.length > amountOfFilmsToShow) {
+            resultLength = amountOfFilmsToShow;
         } else {
             resultLength = movies.length;
         }
@@ -38,4 +38,19 @@ public class MovieManager { // создаем класс, в котором бу
         }
         return result;
     }
+
+    public void removeById(int id) {
+        int length = movies.length - 1;
+        Movie[] tmp = new Movie[length];
+        int index = 0;
+        for (Movie movie : movies) {
+            if (movie.getId() != id) {
+                tmp[index] = movie;
+                index++;
+            }
+        }
+        // меняем наши элементы
+        movies = tmp;
+    }
+
 }
